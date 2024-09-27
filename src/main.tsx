@@ -20,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: "/workaround",
     element: <App type="workaround" />
+  },
+  {
+    path: "/rootcause",
+    element: <App type="rootcause" />
   }
 ])
 

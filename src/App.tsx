@@ -1,8 +1,9 @@
 import { Checkbox, CheckboxGroup, Input, Label, TextField } from 'react-aria-components'
 import './App.css'
 import WorkaroundChecbox from './components/WorkaroundCheckbox'
+import VisuallyHiddenCheckbox from './components/VisuallyHiddenCheckbox'
 
-export default function App({ type }: { type: 'normal' | 'anomaly' | 'workaround' }) {
+export default function App({ type }: { type: 'normal' | 'anomaly' | 'workaround' | 'rootcause' }) {
   return (
     <div className="container">
       <div className="filler">Filler</div>
@@ -18,11 +19,14 @@ export default function App({ type }: { type: 'normal' | 'anomaly' | 'workaround
                 </TextField>
               )}
               {type === 'anomaly' &&  (
-                  <Checkbox>{index}</Checkbox>
-                )}
+                <Checkbox>{index}</Checkbox>
+              )}
               {type === 'workaround' &&  (
-                  <WorkaroundChecbox>{index}</WorkaroundChecbox>
-                )}
+                <WorkaroundChecbox>{index}</WorkaroundChecbox>
+              )}
+              {type === 'rootcause' &&  (
+                <VisuallyHiddenCheckbox>{index}</VisuallyHiddenCheckbox>
+              )}
               </>
             ))
           }
