@@ -1,7 +1,8 @@
 import { Checkbox, CheckboxGroup, Input, Label, TextField } from 'react-aria-components'
 import './App.css'
+import WorkaroundChecbox from './components/WorkaroundCheckbox'
 
-export default function App({ isAnomaly }: { isAnomaly: boolean }) {
+export default function App({ type }: { type: 'normal' | 'anomaly' | 'workaround' }) {
   return (
     <div className="container">
       <div className="filler">Filler</div>
@@ -10,13 +11,17 @@ export default function App({ isAnomaly }: { isAnomaly: boolean }) {
           Array.from(Array(200).keys())
             .map((_, index) => (
               <>
-                {isAnomaly ? (
+              {type === 'normal' &&  (
+                <TextField>
+                  <Label>{index}</Label>
+                  <Input />
+                </TextField>
+              )}
+              {type === 'anomaly' &&  (
                   <Checkbox>{index}</Checkbox>
-                  ) : (
-                  <TextField>
-                    <Label>Label</Label>
-                    <Input />
-                  </TextField>
+                )}
+              {type === 'workaround' &&  (
+                  <WorkaroundChecbox>{index}</WorkaroundChecbox>
                 )}
               </>
             ))

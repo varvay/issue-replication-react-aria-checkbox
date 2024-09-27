@@ -7,15 +7,19 @@ import App from './App'
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App isAnomaly={false} />
+    element: <App type="normal" />
   },
   {
     path: "/normal",
-    element: <App isAnomaly={false} />
+    element: <App type="normal" />
   },
   {
     path: "/anomaly",
-    element: <App isAnomaly={true} />
+    element: <App type="anomaly" />
+  },
+  {
+    path: "/workaround",
+    element: <App type="workaround" />
   }
 ])
 
