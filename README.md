@@ -8,6 +8,7 @@ As pre-requisite to run this project, you must have NPM and Vite installed on yo
 3. execute `npm run dev` inside the project root directory
 4. observe the expected result by accesing the page under root path `/` or `/normal`
 5. observe the anomaly result by accessing the page under anomaly path `/anomaly`
+6. observe the workaround result by accessing the page under workaround path `/workaround`
 
 ## Issue Description
 
