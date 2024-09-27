@@ -1,50 +1,40 @@
-# React + TypeScript + Vite
+# React Aria Checkbox Anomaly
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Run the Web App
+As pre-requisite to run this project, you must have NPM and Vite installed on your local machine.
 
-Currently, two official plugins are available:
+1. clone this project
+2. execute `npm i` inside the project root directory
+3. execute `npm run dev` inside the project root directory
+4. observe the expected result by accesing the page under root path `/` or `/normal`
+5. observe the anomaly result by accessing the page under anomaly path `/anomaly`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Issue Description
 
-## Expanding the ESLint configuration
+An unexpected behavior on the rendered document where the React Aria `Checkbox` components resides outside container somehow still took place physically but invisible when it mustn't. Such issue occurred when the container have CSS properties of `max-width`, `margin-left: auto`, `margin-right: auto` and `overflow: hidden`, and containing overflowing React Aria `Checkbox`, but not with other component such React Aria `TextField`.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+Here's the snippet of the container CSS,
+```
+.container {
+  width: 100vw;
+  max-width: 80vw;
+  height: 100vh;
+  max-height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  background-color: lightsteelblue;
+}
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Here's the comparison of the rendered page with same CSS properties but containing different component (React Aria `Checkbox` and `TextField`),
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### With Checkbox
+[![With Checkbox][1]][1]
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+### With TextField
+[![With TextField][2]][2]
+
+
+  [1]: https://i.sstatic.net/pVEjdsfg.png
+  [2]: https://i.sstatic.net/A2QzXhl8.png
