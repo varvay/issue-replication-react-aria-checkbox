@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100vw;
+  max-width: 80vw;
+  height: 100vh;
+  max-height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  background-color: lightsteelblue;
+}
+
+.filler {
+  width: 95%;
+  height: 95%;
+  background-color: blanchedalmond;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+}
