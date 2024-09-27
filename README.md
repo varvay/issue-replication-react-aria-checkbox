@@ -1,5 +1,8 @@
 # React Aria Checkbox Anomaly
 
+## GitHub Issue
+Here mentioned the related GiHub issue: [#7107](https://github.com/adobe/react-spectrum/discussions/7107)
+
 ## Run the Web App
 As pre-requisite to run this project, you must have NPM and Vite installed on your local machine.
 
